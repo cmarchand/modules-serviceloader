@@ -3,7 +3,7 @@ package top.marchand.demo.java17.modules.professional;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
 import top.marchand.demo.java17.modules.contract.Implementation;
-import top.marchand.demo.java17.modules.contract.LicenseLevel;
+import top.marchand.demo.java17.modules.contract.License;
 
 public class ServiceImplTest {
   @Test
@@ -12,9 +12,9 @@ public class ServiceImplTest {
     SoftAssertions softly = new SoftAssertions();
     Implementation annotation = (Implementation) clazz.getAnnotation(Implementation.class);
     softly.assertThat(annotation).isNotNull();
-    LicenseLevel level = annotation.level();
+    License.LicenseLevel level = annotation.level();
     softly.assertThat(level).isNotNull();
-    softly.assertThat(level).isEqualTo(LicenseLevel.PROFESSIONAL);
+    softly.assertThat(level).isEqualTo(License.LicenseLevel.PROFESSIONAL);
     softly.assertAll();
   }
 }

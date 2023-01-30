@@ -5,7 +5,6 @@ import org.assertj.core.api.ThrowableAssert;
 import org.junit.jupiter.api.Test;
 import top.marchand.demo.java17.modules.UnparsableLicenseException;
 import top.marchand.demo.java17.modules.contract.License;
-import top.marchand.demo.java17.modules.contract.LicenseLevel;
 
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -29,7 +28,7 @@ public class LicenseLoaderTest {
     // when
     License actual = LicenseLoader.parseLicense(url.toURI());
     // then
-    Assertions.assertThat(actual.level()).isEqualTo(LicenseLevel.FREE);
+    Assertions.assertThat(actual.level()).isEqualTo(License.LicenseLevel.FREE);
   }
   @Test
   public void given_professional_license_parseLicense_should_return_Professional_level() throws URISyntaxException, UnparsableLicenseException {
@@ -38,7 +37,7 @@ public class LicenseLoaderTest {
     // when
     License actual = LicenseLoader.parseLicense(url.toURI());
     // then
-    Assertions.assertThat(actual.level()).isEqualTo(LicenseLevel.PROFESSIONAL);
+    Assertions.assertThat(actual.level()).isEqualTo(License.LicenseLevel.PROFESSIONAL);
   }
   @Test
   public void given_enterprise_license_parseLicense_should_return_Enterprise_level() throws URISyntaxException, UnparsableLicenseException {
@@ -47,7 +46,7 @@ public class LicenseLoaderTest {
     // when
     License actual = LicenseLoader.parseLicense(url.toURI());
     // then
-    Assertions.assertThat(actual.level()).isEqualTo(LicenseLevel.ENTERPRISE);
+    Assertions.assertThat(actual.level()).isEqualTo(License.LicenseLevel.ENTERPRISE);
   }
   @Test
   public void given_license_parseLicense_should_return_Christophe_Marchand_licensee() throws URISyntaxException, UnparsableLicenseException {

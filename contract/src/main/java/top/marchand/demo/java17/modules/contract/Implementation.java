@@ -8,5 +8,5 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Implementation {
-  LicenseLevel level() default LicenseLevel.FREE;
+  License.LicenseLevel level() default License.LicenseLevel.FREE;
 }

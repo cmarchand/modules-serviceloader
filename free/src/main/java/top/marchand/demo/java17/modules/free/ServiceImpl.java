@@ -1,20 +1,30 @@
 package top.marchand.demo.java17.modules.free;
 
-import top.marchand.demo.java17.modules.contract.Implementation;
-import top.marchand.demo.java17.modules.contract.License;
-import top.marchand.demo.java17.modules.contract.LicenseLevel;
-import top.marchand.demo.java17.modules.contract.Service;
+import top.marchand.demo.java17.modules.contract.*;
 
-@Implementation(level = LicenseLevel.FREE)
+@Implementation(level = License.LicenseLevel.FREE)
 public class ServiceImpl implements Service {
   private License license;
-  public void freeService() {
+
+  @Override
+  public void freeService() throws InvalidLicenseException {
+    throwExceptionIfInvalidLicense();
     System.out.println("<FREE> freeService()");
-  };
-  public void professionalService() {
+  }
+
+  @Override
+  public void professionalService() throws InvalidLicenseException {
+    throwExceptionIfInvalidLicense();
     System.out.println("<FREE> ILLEGAL professionalService()");
   };
-  public void enterpriseService() {
+
+  @Override
+  public void enterpriseService() throws InvalidLicenseException {
+    throwExceptionIfInvalidLicense();
     System.out.println("<FREE> ILLEGAL enterpriseService()");
   };
+
+  private void throwExceptionIfInvalidLicense() throws InvalidLicenseException {
+    if(!LicenseValidator.getInstance().isLicenseValid(license)) throw new InvalidLicenseException();
+  }
 }

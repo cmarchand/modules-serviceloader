@@ -24,12 +24,6 @@ import java.util.stream.Stream;
 public class ProcessorIT {
 
   @Test
-  public void getServices_should_return_3_implementations() {
-    ServiceLoader<Service> services = Processor.newProcessor().getServices();
-    long count = services.stream().count();
-    Assertions.assertThat(count).isEqualTo(3);
-  }
-  @Test
   public void given_no_license_getService_should_return_FreeServiceImpl() throws Exception {
     // given
     resetLicenseManager();

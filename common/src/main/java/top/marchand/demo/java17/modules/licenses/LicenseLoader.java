@@ -2,7 +2,6 @@ package top.marchand.demo.java17.modules.licenses;
 
 import top.marchand.demo.java17.modules.UnparsableLicenseException;
 import top.marchand.demo.java17.modules.contract.License;
-import top.marchand.demo.java17.modules.contract.LicenseLevel;
 
 import java.io.File;
 import java.io.IOException;
@@ -46,7 +45,7 @@ public class LicenseLoader {
           checksum = extractValueFrom(line);
         }
       }
-      return new License(licensee, LicenseLevel.valueOf(level.toUpperCase()), checksum);
+      return new License(licensee, License.LicenseLevel.valueOf(level.toUpperCase()), checksum);
     } catch (IOException | NullPointerException | IllegalArgumentException ex) {
       throw new UnparsableLicenseException(resource.toString(), ex);
     }
