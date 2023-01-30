@@ -36,7 +36,7 @@ public class ProcessorIT {
     // when
     Service actual = Processor.newProcessor().getService();
     // then
-    Assertions.assertThat(actual.getClass().getName()).isEqualTo("top.marchand.demo.java17.modules.free.ServiceImpl");
+    Assertions.assertThat(actual.getClass()).isSameAs(top.marchand.demo.java17.modules.free.ServiceImpl.class);
   }
   @Test
   public void given_free_license_getService_should_return_FreeServiceImpl() throws Exception {
@@ -51,7 +51,7 @@ public class ProcessorIT {
     // when
     Service actual = Processor.newProcessor().getService();
     // then
-    Assertions.assertThat(actual.getClass().getName()).isEqualTo("top.marchand.demo.java17.modules.free.ServiceImpl");
+    Assertions.assertThat(actual.getClass()).isSameAs(top.marchand.demo.java17.modules.free.ServiceImpl.class);
   }
   @Test
   public void given_free_license_getAllImplementationsValidForLicense_should_return_1() throws Exception {
@@ -129,7 +129,7 @@ public class ProcessorIT {
       Service actual = Processor.newProcessor().getService();
       // then
       SoftAssertions softly = new SoftAssertions();
-      softly.assertThat(actual.getClass().getName()).isEqualTo("top.marchand.demo.java17.modules.professional.ServiceImpl");
+      softly.assertThat(actual.getClass()).isSameAs(top.marchand.demo.java17.modules.professional.ServiceImpl.class);
       softly.assertThat(getServiceLicense(actual)).isSameAs(license);
     }
   }
@@ -146,7 +146,7 @@ public class ProcessorIT {
       Service actual = Processor.newProcessor().getService();
       // then
       SoftAssertions softly = new SoftAssertions();
-      softly.assertThat(actual.getClass().getName()).isEqualTo("top.marchand.demo.java17.modules.enterprise.ServiceImpl");
+      softly.assertThat(actual.getClass()).isSameAs(top.marchand.demo.java17.modules.enterprise.ServiceImpl.class);
       softly.assertThat(getServiceLicense(actual)).isSameAs(license);
     }
   }
