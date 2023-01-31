@@ -7,7 +7,6 @@ import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 import top.marchand.demo.java17.modules.contract.License;
 import top.marchand.demo.java17.modules.contract.Service;
-import top.marchand.demo.java17.modules.licenses.LicenseLoader;
 import top.marchand.demo.java17.modules.licenses.LicenseManager;
 
 import java.lang.reflect.Field;
@@ -152,7 +151,7 @@ public class ProcessorIT {
   }
 
   private License getLicense(String fileName) throws NoSuchMethodException, URISyntaxException, InvocationTargetException, IllegalAccessException {
-    Method method = LicenseLoader.class.getDeclaredMethod("parseLicense", URI.class);
+    Method method = LicenseManager.class.getDeclaredMethod("parseLicense", URI.class);
     method.setAccessible(true);
     URI uri = getClass().getResource("/"+fileName).toURI();
     return (License)method.invoke(null, uri);
